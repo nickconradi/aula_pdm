@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
     TextView textView;
-    int contador = 0;
+    EditText edMin, edMax;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,15 +25,18 @@ public class MainActivity extends AppCompatActivity {
 
         button = findViewById(R.id.button);
         textView = findViewById(R.id.textView);
-
-        button.setText("Espirro!");
-        textView.setText("Você espirrou " + contador  +  "vezes");
+        edMin= findViewById(R.id.edMin);
+        edMax= findViewById(R.id.edMax);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                contador++; // Incrementa o valor
-                textView.setText("Você espirrou " + contador +  "vezes");
+               int minimo= Integer.parseInt(edMin.getText().toString());
+               int maximo= Integer.parseInt(edMax.getText().toString());
+               Random random = new Random();
+
+               int valorSorteado= random. nextInt(maximo)+minimo;
+               textView.setText(Integer.toString(valorSorteado));
             }
         });
 
