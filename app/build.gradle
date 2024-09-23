@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace 'com.example.contador'
+    namespace 'com.example.aula2309'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.contador"
-        minSdk 26
+        applicationId "com.example.aula2309"
+        minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
