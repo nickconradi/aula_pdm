@@ -1,4 +1,3 @@
-
 package com.example.contador;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +14,6 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     EditText edMin, edMax;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,20 +21,25 @@ public class MainActivity extends AppCompatActivity {
 
         button = findViewById(R.id.button);
         textView = findViewById(R.id.textView);
-        edMin= findViewById(R.id.edMin);
-        edMax= findViewById(R.id.edMax);
+        edMin = findViewById(R.id.edMin);
+        edMax = findViewById(R.id.edMax);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               int minimo= Integer.parseInt(edMin.getText().toString());
-               int maximo= Integer.parseInt(edMax.getText().toString());
-               Random random = new Random();
+                int minimo = Integer.parseInt(edMin.getText().toString());
+                int maximo = Integer.parseInt(edMax.getText().toString());
 
-               int valorSorteado= random. nextInt(maximo)+minimo;
-               textView.setText(Integer.toString(valorSorteado));
+                // Certifique-se de que minimo é menor que maximo
+                if (minimo >= maximo) {
+                    textView.setText("Valor mínimo deve ser menor que o valor máximo.");
+                    return;
+                }
+
+                Random random = new Random();
+                int valorSorteado = random.nextInt(maximo - minimo) + minimo; // Correção aqui
+                textView.setText(Integer.toString(valorSorteado));
             }
         });
-
     }
 }
